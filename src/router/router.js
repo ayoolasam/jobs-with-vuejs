@@ -5,6 +5,8 @@ import Login from "@/pages/Login.vue";
 import Register from "@/pages/Register.vue";
 import JobDetails from "@/pages/JobDetails.vue";
 import useUserStore from "@/stores/UserStore";
+import ForgotPassword from "@/pages/ForgotPassword.vue";
+import ResetPassword from "@/pages/ResetPassword.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,6 +32,16 @@ const router = createRouter({
       component: JobDetails,
       meta: { requiresAuth: true },
     },
+    {
+      path:"/forgotPassword",
+      component: ForgotPassword,
+      meta:{ requiresGuest:true }
+    },
+    {
+      path:"/password/reset/:token",
+      component: ResetPassword,
+      meta:{ requiresGuest:true }
+    }
   ],
 });
 router.beforeEach(async(to, from, next) => {

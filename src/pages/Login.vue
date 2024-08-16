@@ -24,6 +24,11 @@
  <span>Dont Have an Account? Register</span>
 </div>
   </RouterLink>
+  <RouterLink to="/forgotPassword">
+    <div class="mt-4 hover:text-black text-black font-bold flex items-center justify-center">
+ <span>Forgot-Password?</span>
+</div>
+  </RouterLink>
 
 </form>
   </div>
