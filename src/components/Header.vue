@@ -1,72 +1,79 @@
 <template>
   <nav class="p-6 flex justify-between items-center shadow-md">
-    <img  class="h-10" src="../assets/images/logo.png" alt="logo" />
-
+    <img class="h-10" src="../assets/images/logo.png" alt="logo" />
 
     <div class="navigation">
-<ul class="flex gap-10  text-secondaryColor uppercase font-medium text-lg">
-  <li  class="hover:text-primaryColor">Jobs</li>
+      <ul class="flex gap-10 text-secondaryColor uppercase font-medium text-lg">
+        <li class="hover:text-primaryColor">Jobs</li>
 
-  <RouterLink to="/">
-    <li class="hover:text-primaryColor">Home</li>
-  </RouterLink>
-  <li class="hover:text-primaryColor">Dashboard</li>
-</ul>
+        <RouterLink to="/">
+          <li class="hover:text-primaryColor">Home</li>
+        </RouterLink>
+        <li class="hover:text-primaryColor">Dashboard</li>
+      </ul>
     </div>
 
+    <div
+      v-if="userStore.isAuthenticated"
+      class="text-black flex items-center gap-4"
+    >
+    <Sidebar v-if="toggle"/>
+      <h2 @click="toggler" class="font-bold italic text-xl uppercase cursor-pointer">{{ userStore?.user?.name }}</h2>
+      <!-- <select
+        v-model="selected"
+        @change="handleChange"
+        class="shadow-md active:outline-none font-semibold uppercase text-secondaryColor py-4 px-4 border-secondaryColor border-b"
+      >
+        <option value="Profile">
+          <RouterLink to="/myProfile"> Profile </RouterLink>
+        </option>
 
-    <div v-if="userStore.isAuthenticated" class="text-black flex items-center gap-4">
-      <h2 class="font-bold text-xl uppercase">{{ userStore?.user?.name}}</h2>
-      <select v-model="selected" @change="handleChange" class=" shadow-md active:outline-none font-semibold uppercase text-secondaryColor py-4 px-4 border-secondaryColor border-b">
-        
-        <option value="Profile">Profile</option>
         <option value="Logout">LogOut</option>
       </select>
-<!--      
+           
       <button  @click="logout" class="border-4 active:outline-none uppercase py-1 px-6 rounded-md border-secondaryColor text-secondaryColor hover:bg-primaryColor hover:text-white" >
         Logout
     </button> -->
     </div>
 
-    
-      <RouterLink to="login" v-else>
-      <button  class="border-4 active:outline-none uppercase py-1 px-6 rounded-md border-secondaryColor text-secondaryColor hover:bg-primaryColor hover:text-white" >
+    <RouterLink to="login" v-else>
+      <button
+        class="border-4 active:outline-none uppercase py-1 px-6 rounded-md border-secondaryColor text-secondaryColor hover:bg-primaryColor hover:text-white"
+      >
         Login
       </button>
-      </RouterLink>
-     
-   
-   
+    </RouterLink>
   </nav>
 </template>
 
 <script setup>
-  import useUserStore from '@/stores/UserStore';
-import { ref } from 'vue';
-import {useRouter} from 'vue-router'
-  const userStore = useUserStore();
-  
+import useUserStore from "@/stores/UserStore";
+import { ref } from "vue";
+import { RouterLink, useRouter } from "vue-router";
+import Sidebar from "./Sidebar.vue";
+const userStore = useUserStore();
+
 const router = useRouter();
-  const selected = ref("Profile")
+const selected = ref("Profile");
+const toggle = ref(false)
 
-  userStore.getUserDetails()
-  
+userStore.getUserDetails();
 
-
-
-const handleChange = ()=>{
-  if(selected.value === "Logout"){
-    try{
-       userStore.logOut()
-   router.push("/Login")
-    }catch(err){
-      console.log(err)
+const handleChange = () => {
+  if (selected.value === "Logout") {
+    try {
+      userStore.logOut();
+      router.push("/Login");
+    } catch (err) {
+      console.log(err);
     }
-  
   }
- 
+};
+const logout = ()=>{
+  userStore.logOut();
+
 }
-
-
-
+const toggler = ()=> {
+toggle.value = !toggle.value
+}
 </script>

@@ -29,10 +29,11 @@ const useUserStore = defineStore("user", {
       localStorage.setItem("user", JSON.stringify(userDetails));
       localStorage.setItem("isAuthenticated", "true");
     },
+
     async logOut() {
      
       try {
-        this.isLoading = true;
+      
         const response = await axios.get(
           "https://jobee-api-1.onrender.com/api/v1/logout",
           {
@@ -43,7 +44,7 @@ const useUserStore = defineStore("user", {
           toast("Logged out successfully", {
             autoClose: 2000,
           });
-          this.isLoading = false;
+         
           this.isAuthenticated = false;
           this.user = null;
 
@@ -51,7 +52,7 @@ const useUserStore = defineStore("user", {
           localStorage.removeItem("isAuthenticated");
        
         }
-      } catch (err) {
+      }catch(err) {
         console.log(err);
       }
     },

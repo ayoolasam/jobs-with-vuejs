@@ -9,7 +9,8 @@ export default {
       colors:{
         secondaryColor:"#eb2f64",
         primaryColor:"#BA265D",
-        layout:" #ccc;"
+        layout:" #ccc;",
+        FooterColor:"#333"
 
       }
     },
