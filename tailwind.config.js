@@ -10,7 +10,8 @@ export default {
         secondaryColor:"#eb2f64",
         primaryColor:"#BA265D",
         layout:" #ccc;",
-        FooterColor:"#333"
+        FooterColor:"#333",
+        input:"#f4f2f2"
 
       }
     },

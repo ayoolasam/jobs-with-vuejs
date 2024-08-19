@@ -57,10 +57,10 @@ const router = createRouter({
 });
 router.beforeEach(async(to, from, next) => {
   const useStore = useUserStore();
-   // Ensure user details are fetched
-   if (!useStore.user && !useStore.isLoading) {
-    await useStore.getUserDetails(); // Fetch user details if not already available
-  }
+  //  // Ensure user details are fetched
+  //  if (!useStore.user && !useStore.isLoading) {
+  //   await useStore.getUserDetails(); // Fetch user details if not already available
+  // }
   
   if (to.meta.requiresAuth && !useStore.isAuthenticated) {
     next({ name: "Login" });
