@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <!-- //search input -->
     <form class="w-1/2 flex mt-[2%] m-auto justify-center items-center">
       <input
         type="text"
@@ -9,7 +10,7 @@
       />
       <i class="fa-solid fa-magnifying-glass -ml-6 text-secondaryColor"></i>
     </form>
-
+    <!-- //filter selection -->
     <div class="Jobtype mt-[2%] flex flex-col items-center justify-center">
       <h2 class="font-semibold">Filter for Job Type</h2>
       <select
@@ -20,6 +21,7 @@
         <option value="Permanent">Permanent</option>
       </select>
     </div>
+    <!-- //jobs -->
     <ul class="container py-3 mt-[5%] m-auto">
       <JobCard :Jobs="Jobs" />
     </ul>
@@ -37,12 +39,13 @@ const Jobs = ref([]);
 const keyword = ref("");
 const JobType = ref("");
 
+//get jobs function
 const getJobs = async () => {
   const params = {};
 
   if (keyword.value) params.keyword = keyword.value;
   if (JobType.value) params.jobType = JobType.value;
- 
+
   const response = await axios.get(
     `https://jobee-api-1.onrender.com/api/v1/jobs`,
     { params }
@@ -52,9 +55,9 @@ const getJobs = async () => {
 };
 
 // getJobs();
-onMounted(() => {
+
   getJobs();
-});
+
 
 watch([keyword, JobType], () => {
   getJobs();

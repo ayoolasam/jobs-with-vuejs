@@ -1,15 +1,15 @@
 <template>
-  <nav class="p-6 flex justify-between items-center shadow-md">
+  <nav class="p-6 navi flex justify-between items-center shadow-md  ">
     <img class="h-10" src="../assets/images/logo.png" alt="logo" />
 
-    <div class="navigation">
-      <ul class="flex gap-10 text-secondaryColor uppercase font-medium text-lg">
-        <li class="hover:text-primaryColor">Jobs</li>
+    <div class="navigation  flex ">
+      <ul class="flex  list gap-10 text-secondaryColor  uppercase font-medium text-lg  ">
+        <li class=" list_item hover:text-primaryColor ">Jobs</li>
 
-        <RouterLink to="/">
-          <li class="hover:text-primaryColor">Home</li>
+        <RouterLink class="list_item" to="/">
+          <li class=" list_item hover:text-primaryColor">Home</li>
         </RouterLink>
-        <li class="hover:text-primaryColor">Dashboard</li>
+        <li class=" list_item hover:text-primaryColor ">Dashboard</li>
       </ul>
     </div>
 
@@ -36,9 +36,9 @@
     </button> -->
     </div>
 
-    <RouterLink to="login" v-else>
+    <RouterLink to="login" class="link" v-else>
       <button
-        class="border-4 active:outline-none uppercase py-1 px-6 rounded-md border-secondaryColor text-secondaryColor hover:bg-primaryColor hover:text-white"
+        class="border-4 active:outline-none uppercase py-1 px-6 rounded-md border-secondaryColor text-secondaryColor hover:bg-primaryColor"
       >
         Login
       </button>
@@ -77,3 +77,42 @@ const toggler = ()=> {
 toggle.value = !toggle.value
 }
 </script>
+
+<style scoped>
+@media (max-width:640px ){
+  .navi{
+    display: flex;
+    flex-direction: column;
+    /* width:100%; */
+  
+    /* background-color: brown; */
+    padding: 20px;
+  }
+  .list{
+  width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* background-color: aqua; */
+    gap:0;
+    margin-top: 10px;
+   
+   
+  }
+  .list_item{
+    width:100%;
+    display: block;
+    /* background: green; */
+    padding: 10px;
+    
+  }
+  .list_item:hover{
+    background-color:#ba265d;
+    color:#fff;
+  }
+  .link{
+    margin-top: 10px;
+  }
+}
+</style>

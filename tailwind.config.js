@@ -5,6 +5,12 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    screens:{
+"phone":"375px",
+"tablet":"500px",
+"laptop":"1024px",
+"tab2":"800px"
+    },
     extend: {
       colors:{
         secondaryColor:"#eb2f64",

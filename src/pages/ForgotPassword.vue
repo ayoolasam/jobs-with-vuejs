@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-layout h-screen flex items-center justify-center">
-    <form @submit.prevent="SubmitForm" class="bg-white py-16 px-32 shadow-lg mb-20  ">
+  <div class="bg-layout contain h-screen flex items-center justify-center">
+    <form @submit.prevent="SubmitForm" class="formo bg-white py-16 px-32 shadow-lg mb-20  ">
   <div class="flex items-center justify-center mb-2">
     <img  class="h-12 " src="../assets/images/logo.png" alt=""/>
   </div>
@@ -64,6 +64,15 @@ if(response.status === 200){
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+@media only screen and (max-width: 640px){
+  .formo{
+  padding:40px;
+  }
+  .contain{
+  height:70%;
+  padding: 20px;
+  
+  }
+}
 </style>

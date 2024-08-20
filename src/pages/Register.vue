@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-layout h-screen flex items-center justify-center">
+  <div class="bg-layout contain h-screen flex items-center justify-center">
     
-<form @submit.prevent="submitForm" class="bg-white py-12 px-32 shadow-lg mb-20  ">
+<form @submit.prevent="submitForm" class="form bg-white py-12 px-32 shadow-lg mb-20  ">
   <div class="flex items-center justify-center mb-2">
     <img  class="h-10 " src="../assets/images/logo.png" alt=""/>
   </div>
@@ -93,3 +93,17 @@ toast("please fill in details",{
 
 
 </script>
+
+<style scoped>
+@media only screen and (max-width: 640px){
+  .form{
+   padding-right: 35px;
+   padding-left: 35px;
+   height:100%;
+   margin-top: 10px;
+  }
+  .contain{
+    padding:50px;
+  }
+}
+</style>

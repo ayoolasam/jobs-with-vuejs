@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-layout h-screen flex items-center justify-center">
+  <div class="bg-layout contain h-screen flex  ">
     
-<form @submit.prevent="submitForm" class="bg-white py-16 px-32 shadow-lg mb-20  ">
+<form @submit.prevent="submitForm" class=" form bg-white py-24 px-32 shadow-lg mb-16 mt-[2%] m-auto ">
   <div class="flex items-center justify-center mb-2">
     <img  class="h-12 " src="../assets/images/logo.png" alt=""/>
   </div>
@@ -41,6 +41,7 @@ import 'vue3-toastify/dist/index.css'
 import axios from 'axios'
 import {useRouter} from'vue-router'
 import useUserStore from "@/stores/UserStore";
+
 
 
  const email = ref("")
@@ -84,3 +85,19 @@ const userStore= useUserStore()
  }
  
 </script>
+<style scoped>
+@media only screen and (max-width: 640px){
+  .form{
+   padding-right: 35px;
+   padding-left: 35px;
+   height:100%;
+   margin-top: 10px;
+   margin-bottom: 0;
+ 
+  }
+  .contain{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  }
+}
+</style>
